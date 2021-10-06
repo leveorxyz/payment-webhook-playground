@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import StripePayment from './components/StripePayment';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PaymentModal from './components/PaymentModal';
+import { Button } from 'react-bootstrap';
 
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <h1>Dokto Payment Testing Ground</h1>
+      <div className="mt-5">
+        <div>
+          <Button onClick={() => setIsModalVisible(true)}>
+            Stripe Payment
+          </Button>
+        </div>
+
+        <PaymentModal
+          show={isModalVisible}
+          handleClose={() => setIsModalVisible(false)}
         >
-          Learn React
-        </a>
-      </header>
+          <StripePayment />
+        </PaymentModal>
+      </div>
+      <ToastContainer position="bottom-right" />
     </div>
   );
 }
