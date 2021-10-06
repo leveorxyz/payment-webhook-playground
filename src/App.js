@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import StripePayment from './components/StripePayment';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import PaymentModal from './components/PaymentModal';
 import { Button } from 'react-bootstrap';
+import StripePayment from './components/StripePayment';
 import PaypalPayment from './components/PaypalPayment';
+import FlutterwavePayment from './components/FlutterwavePayment';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,12 +24,22 @@ function App() {
             Stripe Payment
           </Button>
           <Button
+            variant="warning"
             onClick={() => {
               setActivePayment('paypal');
               setIsModalVisible(true);
             }}
           >
             Paypal Payment
+          </Button>
+          <Button
+            variant="info"
+            onClick={() => {
+              setActivePayment('flutterwave');
+              setIsModalVisible(true);
+            }}
+          >
+            Flutterwave Payment
           </Button>
         </div>
 
@@ -39,6 +49,7 @@ function App() {
         >
           {activePayment === 'stripe' && <StripePayment />}
           {activePayment === 'paypal' && <PaypalPayment />}
+          {activePayment === 'flutterwave' && <FlutterwavePayment />}
         </PaymentModal>
       </div>
       <ToastContainer position="top-right" />
