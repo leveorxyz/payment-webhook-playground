@@ -42,8 +42,7 @@ const CheckoutForm = () => {
       <CardElement id="card-element" />
       <button
         type="submit"
-        className="btn btn-primary"
-        style={{ marginTop: '20px' }}
+        className="btn btn-primary btn-block mt-4"
         disabled={!stripe || loading}
       >
         {loading ? 'processing...' : 'pay by card'}
