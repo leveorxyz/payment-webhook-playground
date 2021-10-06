@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import StripePayment from './components/StripePayment';
 import PaypalPayment from './components/PaypalPayment';
 import FlutterwavePayment from './components/FlutterwavePayment';
+import PaystackPayment from './components/PaystackPayment';
 
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -41,6 +42,15 @@ function App() {
           >
             Flutterwave Payment
           </Button>
+          <Button
+            variant="danger"
+            onClick={() => {
+              setActivePayment('paystack');
+              setIsModalVisible(true);
+            }}
+          >
+            Paystack Payment
+          </Button>
         </div>
 
         <PaymentModal
@@ -50,6 +60,7 @@ function App() {
           {activePayment === 'stripe' && <StripePayment />}
           {activePayment === 'paypal' && <PaypalPayment />}
           {activePayment === 'flutterwave' && <FlutterwavePayment />}
+          {activePayment === 'paystack' && <PaystackPayment />}
         </PaymentModal>
       </div>
       <ToastContainer position="top-right" />
