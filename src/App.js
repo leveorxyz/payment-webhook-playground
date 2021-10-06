@@ -15,7 +15,7 @@ function App() {
     <div className="container">
       <h1 className="text-center">Dokto Payment Testing Ground</h1>
       <div className="mt-5">
-        <div className="d-flex justify-content-around">
+        <div className="d-flex justify-content-around flex-wrap">
           <Button
             onClick={() => {
               setActivePayment('stripe');
